@@ -1,6 +1,7 @@
 import {render} from "react-dom";
 import React from "react";
-import {createStore, combineReducers } from "redux";
+import {createStore, combineReducers, applyMiddleware } from "redux";
+import logger from 'redux-logger'
 
 const initialState = {
     result: 1,
@@ -31,7 +32,7 @@ const mathReducer = (state = {
     return state;
 };
 
-const usergit ci -m "Reducer = (state = {
+const userReducer = (state = {
     age:27,
     user: "Raissa"
     }, action) => {
@@ -52,12 +53,16 @@ const usergit ci -m "Reducer = (state = {
     return state;
 };
 
+const myLogger = (store) => (next) => (action) => {
+    console.log("Logged Action: ", action);
+    next(action); //It is important to call next
+}
 
-
-const store = createStore(combineReducers({ mathReducer, userReducer}));  //Multiple States
+const store = createStore(combineReducers({ mathReducer, userReducer}),
+     {}, applyMiddleware(logger));  //Multiple States
 
 store.subscribe(() => {
-    console.log("Store updated!", store.getState());
+    //console.log("Store updated!", store.getState());
 });
 
 store.dispatch({
