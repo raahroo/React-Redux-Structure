@@ -31,7 +31,7 @@ const mathReducer = (state = {
     return state;
 };
 
-const userReducer = (state = {
+const usergit ci -m "Reducer = (state = {
     age:27,
     user: "Raissa"
     }, action) => {
@@ -45,7 +45,7 @@ const userReducer = (state = {
         case "SET_USER":
         state = {
             ...state,
-            user: action.payload
+            user: action.payload1
         };
             break;
     }
@@ -79,5 +79,5 @@ store.dispatch({
 });
 store.dispatch({
     type: "SET_USER",
-    payload: "Max"
+    payload1: "Max"
 });
