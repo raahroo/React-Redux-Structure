@@ -45,7 +45,7 @@ const usergit ci -m "Reducer = (state = {
         case "SET_USER":
         state = {
             ...state,
-            user: action.payload1
+            user: action.payload
         };
             break;
     }
@@ -79,5 +79,5 @@ store.dispatch({
 });
 store.dispatch({
     type: "SET_USER",
-    payload1: "Max"
+    payload: "Max"
 });
