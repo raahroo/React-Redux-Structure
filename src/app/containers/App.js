@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Main } from './Main';
-import { User } from './User';
+import { Main } from '../components/Main';
+import { User } from '../components/User';
 
 class App extends Component {
-  render() {
+    render() {
+    let { user, setName } = this.props; // Destructuring ES6
     return (
       <div className="App container">
-        <Main changeUsername={() => this.props.setName("Anna")} />
-        <User username={ this.props.user.name } />
+        <Main changeUsername={() => setName("Anna")} />
+        <User username={ user.name } />
       </div>
     );
   }
@@ -16,7 +17,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        user: state.user,
+        user: state.user, //The name from your reducer here (user)
         math: state.math
     };
 };
