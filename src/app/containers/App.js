@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Main } from '../components/Main';
 import { User } from '../components/User';
-
+import { setName } from "../actions/userActions";
 class App extends Component {
     render() {
     let { user, setName } = this.props; // Destructuring ES6
@@ -25,10 +25,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setName: (name) => {
-            dispatch({
-                type: "SET_NAME",
-                payload: name
-            })
+            dispatch(setName(name));
         }
     };
 };
